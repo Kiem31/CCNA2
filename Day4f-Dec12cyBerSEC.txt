@@ -30,7 +30,7 @@ CMD
 ping www.ngcpM.ph
 
 
-net  use  s: \\10.k.1.10\c$
+net  use  s: \\10.32.1.10\c$
 TASK1: PROTECT YOUR MOST IMPORTANT BUSINESS ASSET:
 PROTECT YOUR PEOPLE/IT STAFF VS HARM. USE THE POWER
 OF CISCO ACCESS-LIST TO BLOCK ALL THE PORNSITES INT WORLD.
@@ -42,8 +42,8 @@ no logging console
 Int Gi 2
 no shut
 ip add 192.168.102.11 255.255.255.0
-@telnet use secureCRT: telnet 192.168.108.5
-in SEcureCRT, Paste This:
+!@telnet use secureCRT: telnet 192.168.108.5
+!in SEcureCRT, Paste This:
 config t
 IP ROUTE 0.0.0.0  0.0.0.0 208.8.8.2
 ip name-server 8.8.8.8 1.1.1.1
@@ -54,7 +54,7 @@ ip add 208.8.8.11 255.255.255.0
 int gi 3
 no shut
 ip add 192.168.103.11 255.255.255.0
-
+do sh ip int br
 
 ALL THE PORN SITES THE WORLD ARE OWNED BY 5 COMPANIES:
 
@@ -80,17 +80,17 @@ end
 
 Alternative: use standard ACL 1-99
 config t
-no access-list 69
-access-list 69 DENY 66.254.0.0 0.0.255.255
-access-list 69 DENY 104.21.0.0 0.0.255.255
-access-list 69 DENY 68.235.0.0 0.0.255.255
-access-list 69 DENY 104.17.0.0 0.0.255.255
-access-list 69 DENY 88.208.0.0 0.0.255.255
-access-list 69 DENY 208.77.0.0 0.0.255.255
-access-list 69 DENY 172.67.0.0 0.0.255.255
-access-list 69 permit Any
+no access-list 32
+access-list 32 DENY 66.254.0.0 0.0.255.255
+access-list 32 DENY 104.21.0.0 0.0.255.255
+access-list 32 DENY 68.235.0.0 0.0.255.255
+access-list 32 DENY 104.17.0.0 0.0.255.255
+access-list 32 DENY 88.208.0.0 0.0.255.255
+access-list 32 DENY 208.77.0.0 0.0.255.255
+access-list 32 DENY 172.67.0.0 0.0.255.255
+access-list 32 permit Any
 Int gi 1
- ip access-group 69 in
+ ip access-group 32 in
 end
 Goberno: allow all Porn, for freedom of expression!
 config t
@@ -108,11 +108,11 @@ ping  www.yourschool.edu.ph = _________
 config t
 NO ip access-list standard NOISKUL
 ip access-list standard NOISKUL
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
-DENY   __.__.__.__   0.0.255.255
+DENY   159.89.244.0   0.0.255.255
+DENY   172.67.14.0   0.0.255.255
+DENY   184.168.125.0    0.0.255.255
+DENY   155.137.92.0  0.0.255.255
+DENY   192.124.249.0   0.0.255.255
 Permit Any
 Int Gi 1
  ip access-group NOISKUL in
@@ -281,14 +281,14 @@ TASK7: Enter the World of BlueTeam: Protect vs Redteam: Attack,
 BlueTeam: UTM: unified Threat management:
 1. firewall
 2. VPN
-3. EnterpriseAnti-Virus
+3. EnterpriseAnti-Virus/EndpointProtection
 4. IntrusionDetection/IntrusionPrevention
 5  Network Admissions Control.
 Top 5 UTM: 1.FortinetFortigate: syet
            1.1: Palo Alto:superSuplado
            2. Checkpoint
            3.4 Cisco
-
+     
 Firewall Profile no.1: use ExtendedACL vs NamedExtendedAcl:
 ex.1: you are the Blue Team/SOC guys for pogo sites:
 www.web310.com open only http, https, ping
@@ -299,7 +299,7 @@ tcp,udp,icmp,IP     Any      web310/11
 Config t
 service timestamps log datetime
 service timestamps debug datetime
-logging 10.m.1.10
+logging 10.32.1.10
 logging trap 5
 NO IP access-list Extended FWP1
 IP access-list Extended FWP1
